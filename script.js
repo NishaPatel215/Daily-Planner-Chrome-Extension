@@ -22,7 +22,7 @@ function deleteTask(index){
     updateTasksInLocalStorage();
 }
 
-function createTaskElement(taskObj){
+function createTaskElement(taskObj, index){
     const taskItem = document.createElement("li");
     taskItem.classList.add("taskItem");
 
@@ -45,7 +45,7 @@ function createTaskElement(taskObj){
     removeButton.classList.add("removeButton");
     removeButton.textContent = "X";
     removeButton.addEventListener("click", function(){
-    deleteTask(taskObj);
+    deleteTask(index);
     renderTasks();
     });
 
@@ -61,7 +61,7 @@ function renderTasks(){
     taskList.innerHTML = "";
 
     for(let i=0; i < taskArray.length ; i++ ){
-        const taskElement = createTaskElement(taskArray[i]);
+        const taskElement = createTaskElement(taskArray[i], i);
         taskList.appendChild(taskElement);
     }
 
